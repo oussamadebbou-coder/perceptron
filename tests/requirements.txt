@@ -1,4 +1,0 @@
-pytest
-pytest-cov
-numpy
-scikit-learn
