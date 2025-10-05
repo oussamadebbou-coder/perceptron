@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import classification_report, confusion_matrix
 
-class PerceptronModel:
+class Perceptron:
     def __init__(self, learning_rate=0.01, max_iter=1000):
         self.learning_rate = learning_rate  
         self.max_iter = max_iter  
