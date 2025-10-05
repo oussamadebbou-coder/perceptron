@@ -83,4 +83,11 @@ def test_invalid_inputs():
 # ==========================================================================================
 def test_non_separable_data():
     logger.info("Test: Cas XOR non séparable")
-    X = np.array([[0,0], [0,1]]()
+    X = np.array([[0,0], [0,1], [1,0], [1,1]])
+    y = np.array([0, 1, 1, 0])  # XOR
+    p = Perceptron(learning_rate=0.1, max_iter=100)
+    p.fit(X, y)
+    preds = p.predict(X)
+    acc = np.mean(preds == y)
+    logger.info(f"Précision sur XOR : {acc:.2f}")
+    assert acc < 1.0, "Le perceptron ne devrait pas résoudre parfaitement XOR."
