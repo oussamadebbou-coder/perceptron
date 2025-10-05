@@ -20,12 +20,16 @@ class Perceptron:
         for epoch in range(self.max_iter):
             total_error = 0
             for idx, sample in enumerate(X):
+                # Sortie brute et activation
                 linear_output = np.dot(sample, self.weights) + self.bias
-                y_predicted = self._activation_function(linear_output)
+                prob = self._activation_function(linear_output)
+                y_predicted = 1 if prob >= 0.5 else 0  # seuil de décision
 
-                update = self.learning_rate * (y[idx] - y_predicted)  
+                # Mise à jour des poids (vraie règle du perceptron)
+                update = self.learning_rate * (y[idx] - y_predicted)
                 self.weights += update * sample
                 self.bias += update
+
 
                 # erreur quadratique
                 total_error += (y[idx] - y_predicted) ** 2
